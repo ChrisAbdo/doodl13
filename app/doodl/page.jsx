@@ -19,13 +19,6 @@ const Draw = () => {
     <div>
       {/* place them all in one row */}
       <div className="flex justify-between px-20">
-        {/* <button
-          onClick={() => {
-            saveableCanvas.current.eraseAll();
-          }}
-        >
-          Erase
-        </button> */}
         <button
           onClick={() => {
             saveableCanvas.current.eraseAll();
@@ -48,16 +41,10 @@ const Draw = () => {
             />
           </svg>
         </button>
-        {/* <button
-          onClick={() => {
-            saveableCanvas.current.undo();
-          }}
-        >
-          Undo
-        </button> */}
+
         <button
           onClick={() => {
-            saveableCanvas.current.eraseAll();
+            saveableCanvas.current.undo();
           }}
           className="btn gap-2"
         >
