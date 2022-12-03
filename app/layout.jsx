@@ -2,7 +2,6 @@
 
 import React from 'react';
 import '../styles/globals.css';
-import Web3 from 'web3';
 
 const DarkModeContext = React.createContext({
   isDarkMode: false,

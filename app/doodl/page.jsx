@@ -5,9 +5,9 @@ import CanvasDraw from 'react-canvas-draw';
 import { ChromePicker } from 'react-color';
 import toast, { Toaster } from 'react-hot-toast';
 
-import Marketplace from '../../backend/build/contracts/Marketplace.json';
-import NFT from '../../backend/build/contracts/NFT.json';
-import { create as ipfsHttpClient } from 'ipfs-http-client';
+// import Marketplace from '../../backend/build/contracts/Marketplace.json';
+// import NFT from '../../backend/build/contracts/NFT.json';
+// import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 const Draw = () => {
   // State for the color, dimensions, and brush and lazy radii
@@ -18,20 +18,20 @@ const Draw = () => {
   const [lazyRadius, setLazyRadius] = useState(0);
 
   // State and authorization for IPFS client
-  const ipfsClient = require('ipfs-http-client');
-  const projectId = '2FdliMGfWHQCzVYTtFlGQsknZvb';
-  const projectSecret = '2274a79139ff6fdb2f016d12f713dca1';
-  const auth =
-    'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
-  const client = ipfsHttpClient({
-    host: 'ipfs.infura.io',
-    port: 5001,
-    protocol: 'https',
-    headers: {
-      authorization: auth,
-    },
-  });
-  const IPFSGateway = 'https://ipfs.io/ipfs/';
+  // const ipfsClient = require('ipfs-http-client');
+  // const projectId = '2FdliMGfWHQCzVYTtFlGQsknZvb';
+  // const projectSecret = '2274a79139ff6fdb2f016d12f713dca1';
+  // const auth =
+  //   'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+  // const client = ipfsHttpClient({
+  //   host: 'ipfs.infura.io',
+  //   port: 5001,
+  //   protocol: 'https',
+  //   headers: {
+  //     authorization: auth,
+  //   },
+  // });
+  // const IPFSGateway = 'https://ipfs.io/ipfs/';
 
   const [account, setAccount] = useState();
   const [nfts, setNfts] = useState([]);
