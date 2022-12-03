@@ -3,6 +3,7 @@
 import { useState, createRef } from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { ChromePicker } from 'react-color';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Draw = () => {
   // State for the color, dimensions, and brush and lazy radii
@@ -17,13 +18,54 @@ const Draw = () => {
 
   return (
     <div>
-      {/* place them all in one row */}
-      <div className="flex justify-between px-20">
+      <div class="flex items-center justify-center ">
+        <div class=" rounded overflow-hidden shadow-lg border border-primary">
+          <div class="px-6 py-4 text-center">
+            <h1 class=" text-xl mb-2 ">Prompt:</h1>
+            <h1 class="font-bold text-xl mb-6">ROBOTIC CHIPMUNK</h1>
+            <h1 class=" text-xl mb-2">Time Remaining:</h1>
+            <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+              <div className="flex flex-col">
+                <span className="countdown font-mono text-5xl">
+                  <span style={{ '--value': 15 }}></span>
+                </span>
+                days
+              </div>
+              <div className="flex flex-col">
+                <span className="countdown font-mono text-5xl">
+                  <span style={{ '--value': 10 }}></span>
+                </span>
+                hours
+              </div>
+              <div className="flex flex-col">
+                <span className="countdown font-mono text-5xl">
+                  <span style={{ '--value': 24 }}></span>
+                </span>
+                min
+              </div>
+              <div className="flex flex-col">
+                <span className="countdown font-mono text-5xl">
+                  <span style={{ '--value': 47 }}></span>
+                </span>
+                sec
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-between px-20 mt-20 items-center">
         <button
           onClick={() => {
+            toast.success('Cleared!', {
+              style: {
+                borderRadius: '2px',
+                border: '2px solid #000',
+              },
+            });
             saveableCanvas.current.eraseAll();
           }}
-          className="btn gap-2"
+          className="btn btn-outline gap-2"
         >
           Erase
           <svg
@@ -44,6 +86,12 @@ const Draw = () => {
 
         <button
           onClick={() => {
+            toast.success('Undone!', {
+              style: {
+                borderRadius: '2px',
+                border: '2px solid #000',
+              },
+            });
             saveableCanvas.current.undo();
           }}
           className="btn gap-2"
@@ -65,17 +113,27 @@ const Draw = () => {
           </svg>
         </button>
 
-        <input
-          type="number"
-          value={brushRadius}
-          onChange={(e) => setBrushRadius(parseInt(e.target.value, 10))}
-        />
+        <label>
+          brush size&nbsp;
+          <input
+            type="number"
+            min="0"
+            max="100"
+            value={brushRadius}
+            className="input input-bordered w-20"
+            onChange={(e) => setBrushRadius(parseInt(e.target.value, 10))}
+          />
+        </label>
 
-        <input
-          type="number"
-          value={lazyRadius}
-          onChange={(e) => setLazyRadius(parseInt(e.target.value, 10))}
-        />
+        <label>
+          lazy radius&nbsp;
+          <input
+            type="number"
+            value={lazyRadius}
+            className="input input-bordered w-20"
+            onChange={(e) => setLazyRadius(parseInt(e.target.value, 10))}
+          />
+        </label>
         {/* Add the ChromePicker component here */}
         <ChromePicker
           color={color}
@@ -96,6 +154,21 @@ const Draw = () => {
           className="border-2 border-black"
         />
       </div>
+
+      <div className="flex justify-center mt-10 text-center">
+        <a
+          href="#_"
+          class="relative inline-block px-4 py-2 font-medium group w-1/2"
+        >
+          <span class="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-[#3ace3a] border-2 border-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+          <span class="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-[#3ace3a]"></span>
+          <span class="relative text-black group-hover:text-primary ">
+            Submit doodl!
+          </span>
+        </a>
+      </div>
+
+      <Toaster />
     </div>
   );
 };
