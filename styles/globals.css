@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  @variants dark {
+    .dark {
+      background-color: #111;
+      color: #fff;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
